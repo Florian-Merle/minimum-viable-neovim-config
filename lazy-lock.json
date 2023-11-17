@@ -24,6 +24,7 @@
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "f41675fddb1ea9003187d07ecc627a8bf8292633" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
+  "telescope-ui-select.nvim": { "branch": "master", "commit": "0fc69ebbf178631b8ab76745459fade062156ec5" },
   "telescope.nvim": { "branch": "0.1.4", "commit": "776b509f80dd49d8205b9b0d94485568236d1192" },
   "toggleterm.nvim": { "branch": "main", "commit": "faee9d60428afc7857e0927fdc18daa6c409fa64" },
   "vim-argwrap": { "branch": "master", "commit": "b532cb6805864da4cfcfe0bb6a1ced61e291be02" },

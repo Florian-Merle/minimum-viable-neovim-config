@@ -6,6 +6,7 @@ return {
         -- see https://www.reddit.com/r/neovim/comments/10nzgdx/im_trying_to_set_up_telescope_with_fzfnative_and/j6cah4a/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
         { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
         "nvim-telescope/telescope-file-browser.nvim",
+        "nvim-telescope/telescope-ui-select.nvim",
     },
     cmd = { "Telescope"},
     config = function()
@@ -37,11 +38,16 @@ return {
                         },
                     },
                 },
+                ["ui-select"] = {
+                    require("telescope.themes").get_dropdown {
+                    }
+                },
             }
         }
 
         telescope.load_extension("fzf")
         telescope.load_extension("file_browser")
+        telescope.load_extension("ui-select")
     end,
     keys = {
         {"<leader>.", ":Telescope live_grep <CR>"},
