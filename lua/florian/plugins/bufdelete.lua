@@ -35,12 +35,23 @@ local close_all_bufs_except_current = function()
     end
 end
 
+local close_all_bufs= function()
+  local bufdelete = require('bufdelete')
+
+  for _, buf in ipairs(get_buffers()) do
+    bufdelete.bufdelete(buf)
+  end
+end
+
 return {
     "famiu/bufdelete.nvim",
     config = function ()
         vim.keymap.set("n", "<leader>x", ":Bdelete <CR>")
         vim.keymap.set("n", "<leader>X", function()
             close_all_bufs_except_current()
+        end)
+        vim.keymap.set("n", "<leader>W", function()
+            close_all_bufs()
         end)
     end
 }
