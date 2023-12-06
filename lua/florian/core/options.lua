@@ -23,6 +23,8 @@ vim.opt.scrolloff = 8
 
 vim.opt.wrap = false
 
+vim.opt.termguicolors = true
+
 local yank_group = augroup("HighlightYank", {})
 autocmd('TextYankPost', {
   group = yank_group,
