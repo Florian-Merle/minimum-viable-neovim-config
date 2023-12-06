@@ -1,17 +1,17 @@
-local get_buffers = function (ignore_current_buffer, sort_mru)
+local function get_buffers(ignore_current_buffer, sort_mru)
   local buffers = vim.tbl_filter(
-    function (b)
-      if 1 ~= vim.fn.buflisted(b) then
-        return false
-      end
+  function (b)
+    if 1 ~= vim.fn.buflisted(b) then
+      return false
+    end
 
-      if (ignore_current_buffer or false) and b == vim.api.nvim_get_current_buf() then
-        return false
-      end
+    if (ignore_current_buffer or false) and b == vim.api.nvim_get_current_buf() then
+      return false
+    end
 
-      return true
-    end,
-    vim.api.nvim_list_bufs() or {}
+    return true
+  end,
+  vim.api.nvim_list_bufs() or {}
   )
 
   if not next(buffers) then
@@ -27,15 +27,15 @@ local get_buffers = function (ignore_current_buffer, sort_mru)
   return buffers
 end
 
-local close_all_bufs_except_current = function()
-    local bufdelete = require('bufdelete')
+local function close_all_bufs_except_current()
+  local bufdelete = require('bufdelete')
 
-    for _, buf in ipairs(get_buffers{ignore_current_buffer=true}) do
-        bufdelete.bufdelete(buf)
-    end
+  for _, buf in ipairs(get_buffers{ignore_current_buffer=true}) do
+    bufdelete.bufdelete(buf)
+  end
 end
 
-local close_all_bufs= function()
+local function close_all_bufs()
   local bufdelete = require('bufdelete')
 
   for _, buf in ipairs(get_buffers()) do
@@ -44,14 +44,15 @@ local close_all_bufs= function()
 end
 
 return {
-    "famiu/bufdelete.nvim",
-    config = function ()
-        vim.keymap.set("n", "<leader>x", ":Bdelete <CR>")
-        vim.keymap.set("n", "<leader>X", function()
-            close_all_bufs_except_current()
-        end)
-        vim.keymap.set("n", "<leader>W", function()
-            close_all_bufs()
-        end)
-    end
+  "famiu/bufdelete.nvim",
+  cmd = { "Bdelete" },
+  keys = {
+    {"<leader>x", "<cmd>Bdelete <CR>"},
+    {"<leader>X", function()
+      close_all_bufs_except_current()
+    end},
+    {"<leader>W", function()
+      close_all_bufs()
+    end},
+  },
 }

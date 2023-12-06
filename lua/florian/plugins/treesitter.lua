@@ -3,8 +3,9 @@ return {
     dependencies = {
         {"nvim-treesitter/nvim-treesitter-textobjects"},
     },
+    cmd = { "BufEnter" },
     config = function()
-        require'nvim-treesitter.configs'.setup {
+        require('nvim-treesitter.configs').setup {
             ensure_installed = {
                 "bash",
                 "c",

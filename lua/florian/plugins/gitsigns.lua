@@ -1,38 +1,21 @@
-local function compare()
-  vim.ui.input({ prompt = 'Compare with (origin/master): ' }, function(input)
-    local branch = input or "origin/master"
-    vim.cmd("Gvsplit " .. branch .. ":%")
-  end)
-end
-
-local function toggle_blame()
-  local config = {
-    excluded_buftypes = {
-      "nofile",
-    },
-  }
-
-  if vim.tbl_contains(config.excluded_buftypes, vim.bo.buftype) then
-    return
-  end
-
-  if "fugitiveblame" == vim.bo.filetype then
-    vim.cmd("q")
-  else
-    vim.cmd("Git blame --date=format:'%Y-%m-%d'")
-  end
-end
-
 return {
-    "lewis6991/gitsigns.nvim",
-    config = function ()
-        require('gitsigns').setup()
-
-        vim.keymap.set("n", "<leader>gb", function ()
-            toggle_blame()
-        end)
-        vim.keymap.set("n", "<leader>gc", function ()
-            compare()
-        end)
-    end
+  "lewis6991/gitsigns.nvim",
+  config = function ()
+    require('gitsigns').setup()
+  end,
+  event = { "BufEnter" },
+  keys = {
+    {"<leader>gs", function()
+      require("gitsigns").stage_hunk()
+    end},
+    {"<leader>gu", function()
+      require("gitsigns").undo_stage_hunk()
+    end},
+    {"<leader>gr", function()
+      require("gitsigns").reset_hunk()
+    end},
+    {"<leader>gp", function()
+      require("gitsigns").preview_hunk()
+    end},
+  },
 }
