@@ -22,17 +22,6 @@ return {
 
         lsp.setup()
 
-        vim.keymap.set("n", "<leader>ca", function ()
-            vim.lsp.buf.code_action()
-        end)
-        vim.keymap.set("v", "<leader>ca", function ()
-            vim.lsp.buf.code_action()
-        end)
-        vim.keymap.set("n", "K", function ()
-            vim.lsp.buf.hover()
-        end)
-
-        local cmp = require('cmp')
         cmp.setup({
             mapping = cmp.mapping.preset.insert({
                 ["<CR>"] = cmp.mapping.confirm {
@@ -56,8 +45,19 @@ return {
                     else
                         fallback()
                     end
-                end, { "i", "s", }),
+                end, {"i", "s"}),
             }),
         })
     end,
+    keys = {
+      {"<leader>ca", function()
+        vim.lsp.buf.code_action()
+      end},
+      {"<leader>ca", function()
+        vim.lsp.buf.code_action()
+      end, mode="v"},
+      {"K", function()
+        vim.lsp.buf.hover()
+      end},
+    },
 }
