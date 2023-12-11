@@ -10,6 +10,7 @@ return {
         {'hrsh7th/cmp-nvim-lsp'},
         {'L3MON4D3/LuaSnip'},
     },
+    event = { "BufEnter" },
     config = function()
         local lsp = require('lsp-zero').preset({})
 
@@ -22,6 +23,7 @@ return {
 
         lsp.setup()
 
+        local cmp = require("cmp")
         cmp.setup({
             mapping = cmp.mapping.preset.insert({
                 ["<CR>"] = cmp.mapping.confirm {
