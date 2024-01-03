@@ -18,5 +18,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("n", "<M-[>", "<cmd>vsp <CR>")
+vim.keymap.set("n", "<M-]>", "<cmd>sp <CR>")
+vim.keymap.set("n", "<M-\\>", "<C-w>q")
+
 vim.keymap.set("n", "<leader>la", "<cmd> Lazy <CR>")
 vim.keymap.set("n", "<Esc>", ":noh <CR>")
