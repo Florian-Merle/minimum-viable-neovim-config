@@ -4,7 +4,6 @@ return {
         "Git",
     },
     keys = {
-        {"<leader>gg", "<cmd> Git<CR>"},
         {"<leader>gb", function()
             local config = {
                 excluded_buftypes = {
