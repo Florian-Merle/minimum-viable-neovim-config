@@ -19,3 +19,4 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>la", "<cmd> Lazy <CR>")
+vim.keymap.set("n", "<Esc>", ":noh <CR>")
