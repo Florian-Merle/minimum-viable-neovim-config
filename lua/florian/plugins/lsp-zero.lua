@@ -18,7 +18,7 @@ return {
     config = function()
         local lsp = require('lsp-zero').preset({})
 
-        lsp.on_attach(function(client, bufnr)
+        lsp.on_attach(function(_, bufnr)
             lsp.default_keymaps({buffer = bufnr})
         end)
 
@@ -30,6 +30,7 @@ return {
         lsp.setup()
 
         local cmp = require("cmp")
+        local cmp_action = require('lsp-zero').cmp_action()
         local lspkind = require("lspkind")
 
         cmp.setup({
@@ -43,24 +44,8 @@ return {
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
                 },
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif require("luasnip").expand_or_jumpable() then
-                        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-                    else
-                        fallback()
-                    end
-                end, { "i", "s", }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif require("luasnip").jumpable(-1) then
-                        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-                    else
-                        fallback()
-                    end
-                end, {"i", "s"}),
+                ['<Tab>'] = cmp_action.tab_complete(),
+                ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
             }),
             formatting = {
                 format = lspkind.cmp_format({
@@ -70,7 +55,6 @@ return {
                         nvim_lsp = "[LSP]",
                         luasnip = "[LuaSnip]",
                         nvim_lua = "[Lua]",
-                        latex_symbols = "[Latex]",
                     })
                 }),
             },
