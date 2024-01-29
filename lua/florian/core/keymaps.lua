@@ -4,7 +4,6 @@ vim.keymap.set("n", "<leader>qq", ":x! <CR>")
 vim.keymap.set("n", "<C-s>", ":w <CR>")
 vim.keymap.set("n", "<leader>ww", ":w <CR>")
 vim.keymap.set("n", "<leader>el", "<cmd>e #<1<CR>")
-vim.keymap.set("n", "<leader>wl", ":set wrap! <CR>")
 
 vim.keymap.set("n", "Q", "<nop>")
 
