@@ -5,7 +5,7 @@ return {
     },
     cmd = { "NvimTreeToggle"},
     keys = {
-        {"<C-n>", "<cmd> NvimTreeToggle <CR>"},
+        -- {"<C-n>", "<cmd> NvimTreeToggle <CR>"},
         {"<leader>rf", "<cmd> NvimTreeFindFile <CR>"},
         {"<leader>rc", "<cmd> NvimTreeCollapse <CR>"},
     },
