@@ -67,7 +67,7 @@ return {
                             return
                         end
 
-                        vim.cmd("FzfLua files cwd=" .. cwd)
+                        vim.cmd('Telescope find_files no_ignore=true cwd=' .. cwd)
                     end,
                     opts('Find files in directory')
                 )
@@ -80,7 +80,7 @@ return {
                             return
                         end
 
-                        vim.cmd("FzfLua live_grep cwd=" .. cwd)
+                        vim.cmd('Telescope live_grep no_ignore=true cwd=' .. cwd)
                     end,
                     opts('Find files in directory')
                 )
