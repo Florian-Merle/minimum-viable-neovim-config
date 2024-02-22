@@ -1,3 +1,12 @@
+local delete_buffer = function(prompt_bufnr)
+  local action_state = require("telescope.actions.state")
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+
+  current_picker:delete_selection(function(selection)
+    local force = vim.api.nvim_buf_get_option(selection.bufnr, "buftype") == "terminal"
+        vim.cmd('bdelete ' .. selection.bufnr)
+  end)
+end
 return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.4",
@@ -42,7 +51,20 @@ return {
                     require("telescope.themes").get_dropdown {
                     }
                 },
-            }
+            },
+            pickers = {
+                buffers = {
+                    ignore_current_buffer = true,
+                    mappings = {
+                        i = {
+                            ["<C-x>"] = delete_buffer
+                        },
+                        n = {
+                            ["<C-x>"] = delete_buffer
+                        },
+                    },
+                },
+            },
         }
 
         telescope.load_extension("fzf")
