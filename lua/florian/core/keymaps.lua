@@ -7,11 +7,11 @@ vim.keymap.set("n", "<leader>el", "<cmd>e #<1<CR>")
 
 vim.keymap.set("n", "Q", "<nop>")
 
--- -- keep register when pasting
+-- Keep register when pasting
 -- https://vi.stackexchange.com/a/39907
 vim.keymap.set("x", "p", "P", { silent = true })
 
--- center view after moving verticaly
+-- Center view after moving verticaly
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
