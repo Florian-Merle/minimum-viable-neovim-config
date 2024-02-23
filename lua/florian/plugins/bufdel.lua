@@ -1,9 +1,15 @@
 return {
     "ojroques/nvim-bufdel",
-    cmd = { "BufDel", "BufDelAll", "BufDelOthers" },
     keys = {
         { "<leader>x", "<CMD>BufDel<CR>" },
         { "<leader>X", "<CMD>BufDelOthers<CR>" },
-        { "<leader>qq", "<CMD>BufDelAll<CR>" },
+        { "<leader>W", "<CMD>BufDelAll<CR>" },
+        { "<leader>qq", function ()
+            vim.cmd("BufDelAll")
+            vim.cmd('confirm qall')
+        end},
+    },
+    opts = {
+        quit = false,
     },
 }
