@@ -19,3 +19,22 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>la", "<cmd> Lazy <CR>")
 vim.keymap.set("n", "<Esc>", ":noh <CR>")
+
+-- split window vertically
+vim.keymap.set("n", "<leader>;", function()
+  vim.cmd("vsp")
+  vim.cmd("wincmd l")
+end)
+
+-- split window horizontally
+vim.keymap.set("n", "<leader>'", function()
+  vim.cmd("sp")
+  vim.cmd("wincmd j")
+end)
+
+-- close window
+vim.keymap.set("n", "<leader>0", "<C-w>q")
+
+-- rotate windows
+vim.keymap.set("n", "<leader>r", "<C-w>r")
+
