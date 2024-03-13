@@ -43,14 +43,23 @@ return {
                         ["ic"] = "@class.inner",
                         ["ia"] = "@parameter.inner",
                         ["aa"] = "@parameter.outer",
-                        ["im"] = "@call.inner",
-                        ["am"] = "@call.outer",
                         ["ax"] = "@comment.outer",
                         ["iC"] = "@conditional.inner",
                         ["aC"] = "@conditional.outer",
                         ["iL"] = "@loop.inner",
                         ["aL"] = "@loop.outer",
-                        ["aS"] = "@statement.outer",
+                        ["is"] = "@statement.outer",
+                    },
+                    selection_modes = {
+                        ['@function.outer'] = 'V',
+                        ['@function.inner'] = 'V',
+                        ['@class.outer'] = 'V',
+                        ['@class.inner'] = 'V',
+                        ['@conditional.inner'] = 'V',
+                        ['@conditional.outer'] = 'V',
+                        ['@loop.inner'] = 'V',
+                        ['@loop.outer'] = 'V',
+                        ['@statement.outer'] = 'V',
                     },
                     move = {
                         enable = true,
@@ -65,14 +74,7 @@ return {
                     include_surrounding_whitespace = function(opts)
                         local qs = opts.query_string
 
-                        if     qs == '@function.inner' then return false
-                        elseif qs == '@class.outer' then return false
-                        elseif qs == '@call.outer' then return false
-                        elseif qs == '@comment.outer' then return false
-                        elseif qs == '@conditional.inner' then return false
-                        elseif qs == '@conditional.outer' then return false
-                        elseif qs == '@loop.inner' then return false
-                        elseif qs == '@loop.outer' then return false
+                        if qs == '@statement.outer' then return false
                         end
 
                         return true
