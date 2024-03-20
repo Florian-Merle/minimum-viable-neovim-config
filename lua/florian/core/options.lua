@@ -6,6 +6,9 @@ vim.opt.undofile = true
 vim.opt.relativenumber = true
 vim.opt.number = true
 
+-- needed so oil preview opens on the right side
+vim.opt.splitright = true
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
