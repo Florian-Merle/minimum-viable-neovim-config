@@ -3,13 +3,11 @@ local delete_buffer = function(prompt_bufnr)
   local current_picker = action_state.get_current_picker(prompt_bufnr)
 
   current_picker:delete_selection(function(selection)
-    local force = vim.api.nvim_buf_get_option(selection.bufnr, "buftype") == "terminal"
         vim.cmd('bdelete ' .. selection.bufnr)
   end)
 end
 return {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.4",
     dependencies = {
         "nvim-lua/plenary.nvim",
         -- see https://www.reddit.com/r/neovim/comments/10nzgdx/im_trying_to_set_up_telescope_with_fzfnative_and/j6cah4a/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
@@ -25,13 +23,12 @@ return {
             defaults = {
                 file_ignore_patterns = { ".git/" },
 
-                -- hack to set ivy theme as default
-                layout_strategy = 'bottom_pane',
+                layout_strategy = 'horizontal',
                 layout_config = {
-                    height = 25,
+                    height = 100,
+                    width = 1000,
                 },
-                border = true,
-                sorting_strategy = "ascending",
+                sorting_strategy = "descending",
                 borderchars = {
                     prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
                     results = { " " },

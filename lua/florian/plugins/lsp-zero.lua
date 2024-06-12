@@ -17,6 +17,21 @@ return {
     event = { "BufEnter" },
     config = function()
         local lsp = require('lsp-zero').preset({})
+        require("mason").setup()
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "lua_ls",
+                "eslint",
+                "html",
+                "cssls",
+                "yamlls",
+                "jsonls",
+                "dockerls",
+            },
+            handlers = {
+                lsp.default_setup,
+            },
+        })
 
         lsp.on_attach(function(_, bufnr)
             lsp.default_keymaps({buffer = bufnr})
@@ -83,8 +98,7 @@ return {
         {"<leader>ca", function()
             vim.lsp.buf.code_action()
         end, mode="v"},
-        {"K", function()
-            vim.lsp.buf.hover()
-        end},
+        { "<leader>al", "<CMD> LspStart ltex <CR>" },
+        { "<leader>ol", "<CMD> LspStop ltex <CR>" },
     },
 }

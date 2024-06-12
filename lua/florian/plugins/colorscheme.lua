@@ -1,50 +1,28 @@
 return {
-    "catppuccin/nvim",
-    dependencies = {
-        "f-person/auto-dark-mode.nvim",
+  "projekt0n/github-nvim-theme",
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  config = function()
+    -- weird shit warning here
+    -- I don't know why, but if I do not apply the theme twice, then there will be issues
+    -- with the color of , ; and \
+    -- don't ask how I realized the theme should be applied twice
+    vim.cmd.colorscheme("github_light")
+    vim.cmd.colorscheme("github_light")
+  end,
+  keys = {
+    {
+      "<leader>tt",
+      function()
+        if vim.g.colors_name == "github_light" then
+          vim.cmd.colorscheme("github_dark")
+          vim.cmd.colorscheme("github_dark")
+        else
+          vim.cmd.colorscheme("github_light")
+          vim.cmd.colorscheme("github_light")
+        end
+      end,
     },
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-        vim.cmd([[colorscheme catppuccin-latte]])
-
-        require("catppuccin").setup({
-            integrations = {
-                cmp = true,
-                gitsigns = true,
-                indent_blankline = {
-                    enabled = true,
-                    colored_indent_levels = false,
-                },
-                mason = true,
-                native_lsp = {
-                    enabled = true,
-                },
-                nvimtree = true,
-                treesitter = true,
-            },
-            custom_highlights = function(colors)
-                return {
-                    CurSearch = { bg = colors.flamingo },
-                    FzfLuaBufName = { fg = colors.flamingo },
-                    FzfLuaBufNr = { fg = colors.flamingo },
-                    FzfLuaBufLineNr = { fg = colors.flamingo },
-                    FzfLuaBufFlagCur = { fg = colors.flamingo },
-                    FzfLuaBufFlagAlt = { fg = colors.flamingo },
-                    FzfLuaHeaderBind = { fg = colors.flamingo },
-                }
-            end
-        })
-
-        local auto_dark_mode = require('auto-dark-mode')
-        auto_dark_mode.setup({
-            update_interval = 1000,
-            set_dark_mode = function()
-                vim.cmd([[colorscheme catppuccin-frappe]])
-            end,
-            set_light_mode = function()
-                vim.cmd([[colorscheme catppuccin-latte]])
-            end,
-        })
-    end,
+  },
 }

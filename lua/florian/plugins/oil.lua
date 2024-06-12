@@ -56,7 +56,10 @@ return {
             buflisted = true, -- so the buffer is not volatile
             bufhidden = "hide",
         },
-        lsp_rename_autosave = true,
+        lsp_file_methods = {
+            timeout_ms = 1000,
+            autosave_changes = false,
+        },
         skip_confirm_for_simple_edits = true,
         prompt_save_on_select_new_entry = false,
     },

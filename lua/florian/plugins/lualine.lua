@@ -3,7 +3,6 @@ return {
   opts = {
     options = {
       icons_enabled = false,
-      theme = 'catppuccin',
       component_separators = { left = '| ', right = ' |'},
       section_separators = '',
     },
@@ -17,6 +16,13 @@ return {
       lualine_x = {
         "filetype",
       },
+    },
+    extensions = {
+      "lazy",
+      "mason",
+      "oil",
+      "fugitive",
+      "quickfix",
     },
   },
 }
