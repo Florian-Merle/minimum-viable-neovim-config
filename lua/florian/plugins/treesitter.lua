@@ -22,6 +22,7 @@ return {
                 "twig",
                 "vim",
                 "vimdoc",
+                "http",
             },
             highlight = {
                 enable = true,

@@ -37,3 +37,10 @@ autocmd('TextYankPost', {
     })
   end,
 })
+
+-- needed for kulala
+vim.filetype.add({
+  extension = {
+    ['http'] = 'http',
+  },
+})
