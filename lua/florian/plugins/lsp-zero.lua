@@ -5,14 +5,6 @@ return {
         {'neovim/nvim-lspconfig'},
         {'williamboman/mason.nvim'},
         {'williamboman/mason-lspconfig.nvim'},
-
-        {'hrsh7th/nvim-cmp'},
-        {'hrsh7th/cmp-nvim-lsp'},
-        {"hrsh7th/cmp-nvim-lsp-signature-help"},
-        {"hrsh7th/cmp-buffer"},
-        {"hrsh7th/cmp-cmdline"},
-        {'L3MON4D3/LuaSnip'},
-        {"onsails/lspkind.nvim"},
     },
     event = { "BufEnter" },
     config = function()
@@ -39,57 +31,16 @@ return {
 
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
         require('lspconfig').phpactor.setup({
-            require("cmp_nvim_lsp").default_capabilities()
+            init_options = {
+                ['language_server_php_cs_fixer.enabled'] = false,
+                ['language_server_worse_reflection.inlay_hints.enable'] = true,
+                ['language_server_worse_reflection.inlay_hints.params'] = true,
+                ['language_server_worse_reflection.inlay_hints.types'] = true,
+                ['language_server_completion.trim_leading_dollar'] = true,
+            },
         })
 
         lsp.setup()
-
-        local cmp = require("cmp")
-        local cmp_action = require('lsp-zero').cmp_action()
-        local lspkind = require("lspkind")
-
-        cmp.setup({
-            sources = {
-                { name = "nvim_lsp" },
-                { name = "nvim_lsp_signature_help" },
-                { name = "buffer" },
-            },
-            mapping = cmp.mapping.preset.insert({
-                ["<CR>"] = cmp.mapping.confirm {
-                    behavior = cmp.ConfirmBehavior.Insert,
-                    select = true,
-                },
-                ['<Tab>'] = cmp_action.tab_complete(),
-                ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
-            }),
-            formatting = {
-                format = lspkind.cmp_format({
-                    mode = "symbol_text",
-                    menu = ({
-                        buffer = "[Buffer]",
-                        nvim_lsp = "[LSP]",
-                        luasnip = "[LuaSnip]",
-                        nvim_lua = "[Lua]",
-                    })
-                }),
-            },
-        })
-
-        cmp.setup.cmdline({ "/", "?" }, {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "buffer" },
-            },
-        })
-
-        cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = "path" },
-            }, {
-                    { name = "cmdline" }
-                }),
-        })
     end,
     keys = {
         {"<leader>ca", function()
