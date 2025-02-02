@@ -7,6 +7,14 @@ return {
   },
   opts_extend = { "sources.default" },
   opts = {
+    completion = {
+      list = {
+        selection = {
+          preselect = false,
+          auto_insert = true,
+        },
+      },
+    },
     keymap = {
       preset = 'enter',
       ['<Tab>'] = { 'select_next', 'fallback' },
