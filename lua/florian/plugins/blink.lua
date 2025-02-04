@@ -21,7 +21,10 @@ return {
       ['<S-Tab>'] = { 'select_prev', 'fallback' },
     },
     enabled = function()
-      return not vim.tbl_contains({ "laika" }, vim.bo.filetype)
+      return not vim.tbl_contains({
+        "laika",
+        "TelescopePrompt",
+      }, vim.bo.filetype) and vim.b.completion ~= false
     end,
     sources = {
       default = {
