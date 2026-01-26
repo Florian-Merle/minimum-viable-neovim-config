@@ -74,6 +74,7 @@ return {
         {"<C-f>", "<cmd>Telescope current_buffer_fuzzy_find <CR>"},
         {"<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>"},
         {"<leader>fo", "<cmd>Telescope oldfiles <CR>"},
+        -- TODO:
         {"<tab>", "<cmd>Telescope buffers <CR>"},
         {"gd", "<cmd>Telescope lsp_definitions <CR>"},
         {"gr", "<cmd>Telescope lsp_references <CR>"},

@@ -37,4 +37,3 @@ vim.keymap.set("n", "<leader>0", "<C-w>q")
 
 -- rotate windows
 vim.keymap.set("n", "<leader>r", "<C-w>r")
-

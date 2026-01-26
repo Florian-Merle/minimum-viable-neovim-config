@@ -49,7 +49,5 @@ return {
         {"<leader>ca", function()
             vim.lsp.buf.code_action()
         end, mode="v"},
-        { "<leader>al", "<CMD> LspStart ltex <CR>" },
-        { "<leader>ol", "<CMD> LspStop ltex <CR>" },
     },
 }
