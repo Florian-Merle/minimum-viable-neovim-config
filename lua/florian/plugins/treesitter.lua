@@ -23,6 +23,8 @@ return {
                 "vim",
                 "vimdoc",
                 "http",
+                "toml",
+                "tmux",
             },
             highlight = {
                 enable = true,

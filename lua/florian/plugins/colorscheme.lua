@@ -11,18 +11,4 @@ return {
     vim.cmd.colorscheme("github_light")
     vim.cmd.colorscheme("github_light")
   end,
-  keys = {
-    {
-      "<leader>tt",
-      function()
-        if vim.g.colors_name == "github_light" then
-          vim.cmd.colorscheme("github_dark")
-          vim.cmd.colorscheme("github_dark")
-        else
-          vim.cmd.colorscheme("github_light")
-          vim.cmd.colorscheme("github_light")
-        end
-      end,
-    },
-  },
 }
