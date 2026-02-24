@@ -25,6 +25,8 @@ return {
                 "http",
                 "toml",
                 "tmux",
+                "yaml",
+                "gitignore",
             },
             highlight = {
                 enable = true,
