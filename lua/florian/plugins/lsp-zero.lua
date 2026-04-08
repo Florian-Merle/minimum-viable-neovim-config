@@ -30,15 +30,7 @@ return {
         end)
 
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-        require('lspconfig').phpactor.setup({
-            init_options = {
-                ['language_server_php_cs_fixer.enabled'] = false,
-                ['language_server_worse_reflection.inlay_hints.enable'] = true,
-                ['language_server_worse_reflection.inlay_hints.params'] = true,
-                ['language_server_worse_reflection.inlay_hints.types'] = true,
-                ['language_server_completion.trim_leading_dollar'] = true,
-            },
-        })
+        require('lspconfig').phpactor.setup{}
 
         lsp.setup()
     end,
